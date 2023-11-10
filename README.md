@@ -1,7 +1,7 @@
 # EKON27_MVVM
 Demoproject for EKON 27 about MVVM [(Model View ViewModel)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 
-This project contains two seperate Delphi projects, bundled in a group.
+This project contains two seperate Delphi projects, bundled in a group. It is created in Delphi 11.3
 It's meant to be a fairly simple description of how and why we should seperate Graphical Userinterface from GUI.
 
 ## Before

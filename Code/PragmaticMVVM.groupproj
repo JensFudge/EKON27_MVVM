@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{67F92B0D-C96F-494E-9EA2-9962FC9C7852}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Before MVVM\MVVMDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="After MVVM\BuildMVVMAfter.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MVVMDemo">
+        <MSBuild Projects="Before MVVM\MVVMDemo.dproj"/>
+    </Target>
+    <Target Name="MVVMDemo:Clean">
+        <MSBuild Projects="Before MVVM\MVVMDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVVMDemo:Make">
+        <MSBuild Projects="Before MVVM\MVVMDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BuildMVVMAfter">
+        <MSBuild Projects="After MVVM\BuildMVVMAfter.dproj"/>
+    </Target>
+    <Target Name="BuildMVVMAfter:Clean">
+        <MSBuild Projects="After MVVM\BuildMVVMAfter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BuildMVVMAfter:Make">
+        <MSBuild Projects="After MVVM\BuildMVVMAfter.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MVVMDemo;BuildMVVMAfter"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MVVMDemo:Clean;BuildMVVMAfter:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MVVMDemo:Make;BuildMVVMAfter:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
